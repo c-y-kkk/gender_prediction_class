@@ -5,7 +5,10 @@ from nltk.classify import apply_features
 from joblib import load
 
 # Download NLTK resources if not already downloaded
-nltk.download('names')
+try:
+    nltk.data.find('corpora/names')
+except LookupError:
+    nltk.download('names')
 
 # Function to extract features from a name
 def extract_gender_features(name):
